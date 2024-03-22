@@ -1,0 +1,62 @@
+{
+  "name": "ts-starter-library",
+  "version": "0.0.1",
+  "description": "Starter template to create typescript library",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Nur Muhammad",
+    "email": "blog.nurmuhammad@gmail.com",
+    "url": "https://ngekoding.github.io"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ngekoding/ts-starter-library#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngekoding/ts-starter-library.git"
+  },
+  "bugs": "https://github.com/ngekoding/ts-starter-library/issues",
+  "keywords": [
+    "ts-starter",
+    "ts-library",
+    "library-template"
+  ],
+  "main": "dist/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "dist",
+    "esm",
+    "src"
+  ],
+  "scripts": {
+    "test": "jest",
+    "prepare": "husky",
+    "clean": "rimraf dist esm",
+    "prebuild": "npm run clean",
+    "build:cjs": "tsc --module commonjs --outDir dist",
+    "build:esm": "tsc --target es2018 --outDir esm",
+    "build": "npm run build:esm && npm run build:cjs",
+    "prepublishOnly": "npm run build",
+    "release": "bumpp && npm publish",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.9.0",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "@types/jest": "^29.5.12",
+    "bumpp": "^9.4.0",
+    "eslint": "^8.57.0",
+    "husky": "^9.0.11",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.2",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.3"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
